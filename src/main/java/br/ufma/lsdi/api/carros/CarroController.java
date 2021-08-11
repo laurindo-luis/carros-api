@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,23 +30,19 @@ public class CarroController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getCarroById(@PathVariable("id") Long id) {
-		
-		return carroService.getCarroById(id)
-				.map(ResponseEntity::ok)
-				.orElse(ResponseEntity.notFound().build());
+		CarroDTO carro = carroService.getCarroById(id);
+		return ResponseEntity.ok(carro);
 	}
 	
 	@PostMapping
 	public ResponseEntity<?> salvar(@RequestBody Carro carro) {
-		
-		try {
-			CarroDTO carroDTO = carroService.salvar(carro);
-			return carroDTO == null ? ResponseEntity.badRequest().build() : 
-				ResponseEntity.created(getURI(carroDTO.getId())).build();
-		} catch(Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.badRequest().build();
-		}
+		CarroDTO carroDTO = carroService.salvar(carro);
+		return ResponseEntity.created(getURI(carroDTO.getId())).build();
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deletar(@PathVariable("id") Long id) {
+		carroService.deletar(id);
 	}
 	
 	private URI getURI(Long id) {
