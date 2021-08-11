@@ -13,7 +13,7 @@ public class CarroDTO {
 	private String modelo;
 	private String cor;
 	
-	public CarroDTO create(Carro carro) {
+	public static CarroDTO create(Carro carro) {
 		return new ModelMapper().map(carro, CarroDTO.class);
 	}
 }
