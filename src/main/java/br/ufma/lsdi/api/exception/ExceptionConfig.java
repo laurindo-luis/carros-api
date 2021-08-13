@@ -5,6 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -31,12 +32,12 @@ public class ExceptionConfig extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({
 		AccessDeniedException.class
 	})
-	public ResponseEntity aceessDenied(Exception e) {
+	public ResponseEntity acessDenied(Exception e) {
 		return ResponseEntity
 				.status(HttpStatus.FORBIDDEN)
 				.body(new ExceptionErro("Acesso Negado"));
 	}
-	
+		
 	@Override
 	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(
 			HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) { 
