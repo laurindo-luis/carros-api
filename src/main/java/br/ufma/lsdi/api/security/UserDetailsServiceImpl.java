@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.sun.tools.sjavac.Log;
 
 import br.ufma.lsdi.api.user.UserService;
 
