@@ -1,7 +1,6 @@
 package br.ufma.lsdi.api.carros;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.internal.util.Assert;

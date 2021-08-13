@@ -32,7 +32,6 @@ public class ExceptionConfig extends ResponseEntityExceptionHandler {
 			HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) { 
 		return new ResponseEntity(new ExceptionErro("Operação não permitida"), HttpStatus.METHOD_NOT_ALLOWED);
 	}
-	
 }
 
 
