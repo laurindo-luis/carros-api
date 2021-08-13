@@ -4,6 +4,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -25,6 +26,15 @@ public class ExceptionConfig extends ResponseEntityExceptionHandler {
 	})
 	public ResponseEntity badRequest(Exception e) {
 		return ResponseEntity.badRequest().build();
+	}
+	
+	@ExceptionHandler({
+		AccessDeniedException.class
+	})
+	public ResponseEntity aceessDenied(Exception e) {
+		return ResponseEntity
+				.status(HttpStatus.FORBIDDEN)
+				.body(new ExceptionErro("Acesso Negado"));
 	}
 	
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ public class CarroController {
 	}
 	
 	@PostMapping
+	@Secured({ "ROLE_ADMIN "})
 	public ResponseEntity<?> salvar(@RequestBody Carro carro) {
 		CarroDTO carroDTO = carroService.salvar(carro);
 		return ResponseEntity.created(getURI(carroDTO.getId())).build();
