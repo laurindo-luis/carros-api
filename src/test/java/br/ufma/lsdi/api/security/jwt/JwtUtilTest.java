@@ -10,6 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import br.ufma.lsdi.api.user.User;
+import br.ufma.lsdi.api.user.UserDTO;
 import br.ufma.lsdi.api.user.UserService;
 
 @SpringBootTest
@@ -40,6 +44,6 @@ public class JwtUtilTest {
 		
 		//Verifica roles
 		List<GrantedAuthority> roles = JwtUtil.getRoles(token);
-		assertEquals(roles.get(0).getAuthority(), "ROLE_USER");
+		assertEquals(roles.get(0).getAuthority(), "ROLE_USER");		
 	}
 }
