@@ -25,10 +25,4 @@ public class UserController {
 	public UserDetails userInfo(@AuthenticationPrincipal UserDetails user) {
 		return user;
 	}
-
-	@PostMapping
-	public ResponseEntity salvar(@RequestBody User user) {
-		userService.salvar(user);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
-	}
 }
