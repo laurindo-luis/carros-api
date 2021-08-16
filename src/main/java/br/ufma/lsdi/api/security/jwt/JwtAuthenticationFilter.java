@@ -18,8 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.ufma.lsdi.api.user.User;
-import br.ufma.lsdi.api.user.UserDTO;
+import br.ufma.lsdi.api.users.User;
+import br.ufma.lsdi.api.users.UserDTO;
 
 //Classe que controla o processo de login e geração do Token
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {

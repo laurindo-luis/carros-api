@@ -12,9 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.ufma.lsdi.api.user.User;
-import br.ufma.lsdi.api.user.UserDTO;
-import br.ufma.lsdi.api.user.UserService;
+import br.ufma.lsdi.api.users.User;
+import br.ufma.lsdi.api.users.UserDTO;
+import br.ufma.lsdi.api.users.UserService;
 
 @SpringBootTest
 public class JwtUtilTest {

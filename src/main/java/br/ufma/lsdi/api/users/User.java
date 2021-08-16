@@ -1,4 +1,4 @@
-package br.ufma.lsdi.api.user;
+package br.ufma.lsdi.api.users;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +15,6 @@ import javax.persistence.ManyToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.ufma.lsdi.api.role.Role;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package br.ufma.lsdi.api.user;
+package br.ufma.lsdi.api.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

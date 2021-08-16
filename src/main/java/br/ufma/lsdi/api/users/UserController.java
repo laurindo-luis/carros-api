@@ -1,4 +1,6 @@
-package br.ufma.lsdi.api.user;
+package br.ufma.lsdi.api.users;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,14 @@ public class UserController {
 	/*
 	 * UserDetails é uma interface que representa o usuário logado
 	 */
+	@GetMapping("/info")
+	public UserDTO userInfo(@AuthenticationPrincipal User user) {
+		return UserDTO.create(user);
+	}
+	
 	@GetMapping
-	public UserDetails userInfo(@AuthenticationPrincipal UserDetails user) {
-		return user;
+	public ResponseEntity getusers() {
+		List<UserDTO> users = userService.getUsers();
+		return ResponseEntity.ok(users);
 	}
 }

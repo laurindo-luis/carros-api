@@ -1,4 +1,7 @@
-package br.ufma.lsdi.api.user;
+package br.ufma.lsdi.api.users;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,5 +25,12 @@ public class UserService {
 		user.setSenha(encoder.encode(user.getSenha()));
 		
 		userRepository.save(user);
+	}
+	
+	public List<UserDTO> getUsers() {
+		return userRepository.findAll()
+				.stream()
+				.map(UserDTO::create)
+				.collect(Collectors.toList());
 	}
 }

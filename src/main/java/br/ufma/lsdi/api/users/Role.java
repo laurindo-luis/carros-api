@@ -1,4 +1,4 @@
-package br.ufma.lsdi.api.role;
+package br.ufma.lsdi.api.users;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

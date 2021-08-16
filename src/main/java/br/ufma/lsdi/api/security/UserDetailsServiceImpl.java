@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.ufma.lsdi.api.user.User;
-import br.ufma.lsdi.api.user.UserService;
+import br.ufma.lsdi.api.users.User;
+import br.ufma.lsdi.api.users.UserService;
 
 @Service(value = "userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
