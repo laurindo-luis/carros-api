@@ -61,7 +61,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException failed) throws IOException, ServletException {
-		String json = ServletUtil.toJson("erro", "Login incorreto");
+		String json = ServletUtil.toJson("error", "Login incorreto");
 		ServletUtil.write(response, HttpStatus.UNAUTHORIZED, json);
 	}
 }

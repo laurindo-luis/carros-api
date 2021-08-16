@@ -24,9 +24,6 @@ import br.ufma.lsdi.api.user.UserService;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 	
-	@Autowired
-	private UserService userService;
-	
 	private UserDetailsService userDetailsService;
 	
 	public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
@@ -53,7 +50,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 			}
 			
 			String login = JwtUtil.getLogin(token);
-			UserDetails userDetails = userService.getUserByLogin(login);
+			UserDetails userDetails = userDetailsService.loadUserByUsername(login);
 			List<GrantedAuthority> authorities = JwtUtil.getRoles(token);
 			
 			Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
@@ -65,5 +62,4 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 			throw e;
 		}
 	}
-
 }

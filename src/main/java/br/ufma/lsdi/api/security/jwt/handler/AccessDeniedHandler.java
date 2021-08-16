@@ -10,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
 import br.ufma.lsdi.api.security.jwt.ServletUtil;
 
+@Component
 public class AccessDeniedHandler implements org.springframework.security.web.access.AccessDeniedHandler {
 
 	@Override
