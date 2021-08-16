@@ -5,13 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
 
 @Entity
 public class Carro {
@@ -19,6 +19,11 @@ public class Carro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String modelo;
-	private String cor;
+	private String nome;
+	private String tipo;
+	private String descricao;
+	private String urlFoto;
+	private String urlVideo;
+	private String latitude;
+	private String longitude;
 }
