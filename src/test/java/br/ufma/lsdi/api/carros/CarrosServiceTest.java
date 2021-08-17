@@ -50,7 +50,7 @@ public class CarrosServiceTest {
 	@Test
 	@Order(2)
 	public void getCarros() {
-		List<CarroDTO> carros = carroService.getCarros(PageRequest.of(0, 100));
+		List<CarroDTO> carros = (List<CarroDTO>) carroService.getCarros(PageRequest.of(0, 100)).getBody();
 		assertEquals(30, carros.size());
 	}
 }
