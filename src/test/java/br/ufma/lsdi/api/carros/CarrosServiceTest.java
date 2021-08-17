@@ -8,14 +8,11 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import br.ufma.lsdi.api.exception.ObjectNotFoundException;
-import io.jsonwebtoken.lang.Assert;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
@@ -33,12 +30,12 @@ public class CarrosServiceTest {
 				null, null, null, null);
 		CarroDTO carroDTO = carroService.salvar(c);
 		Long id = carroDTO.getId();
-		Assert.notNull(id);
+		assertNotNull(id);
 		
 		//Buscar carro inserido
 		carroDTO = null;
 		carroDTO = carroService.getCarroById(id);
-		Assert.notNull(carroDTO);
+		assertNotNull(carroDTO);
 		
 		//Deletar carro inserido
 		carroService.deletar(id);

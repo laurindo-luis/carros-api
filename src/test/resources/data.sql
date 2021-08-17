@@ -28,3 +28,12 @@ insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VA
 insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Mercedes SLR McLaren','Descrição Mercedes SLR McLaren','http://www.livroandroid.com.br/livro/carros/luxo/Mercedes_McLaren.png','http://www.livroandroid.com.br/livro/carros/luxo/mclaren_slr.mp4','-23.564224','-46.653156','luxo');
 insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Rolls Royce Phantom','Descrição Rolls Royce Phantom','http://www.livroandroid.com.br/livro/carros/luxo/Rolls_Royce_Phantom.png','http://www.livroandroid.com.br/livro/carros/luxo/rolls_royce.mp4','-23.564224','-46.653156','luxo');
 insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Lexus LFA','Descrição Lexus LFA','http://www.livroandroid.com.br/livro/carros/luxo/Lexus_LFA.png','http://www.livroandroid.com.br/livro/carros/luxo/lexus.mp4','-23.564224','-46.653156','luxo');
+
+insert into user(id,nome, login,senha) values (1,'Luis Laurindo','luis','$2a$10$uo3aOztgKByr46yS6F9kW.MDQxAw9c.CB7d1xqfcbQ2mvXI.HKTtq');
+insert into user(id,nome, login,senha) values (2,'Admin','admin','$2a$10$uo3aOztgKByr46yS6F9kW.MDQxAw9c.CB7d1xqfcbQ2mvXI.HKTtq');
+
+insert into role(id,nome) values (1, 'ROLE_USER');
+insert into role(id,nome) values (2, 'ROLE_ADMIN');
+
+insert into user_roles(user_id,role_id) values(1, 1);
+insert into user_roles(user_id,role_id) values(2, 2);
