@@ -26,7 +26,7 @@ public class CarroController {
 	private CarroService carroService;
 	
 	@GetMapping
-	public ResponseEntity<?> getCarro(@RequestParam(value = "page", defaultValue="1") Integer page,
+	public ResponseEntity<PageOutput> getCarros(@RequestParam(value = "page", defaultValue="1") Integer page,
 			@RequestParam(value = "size", defaultValue="10") Integer size) {
 		
 		PageOutput pageOutput = carroService.getCarros(PageRequest.of(page - 1, size));
@@ -34,7 +34,7 @@ public class CarroController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getCarroById(@PathVariable("id") Long id) {
+	public ResponseEntity<CarroDTO> getCarroById(@PathVariable("id") Long id) {
 		CarroDTO carro = carroService.getCarroById(id);
 		return ResponseEntity.ok(carro);
 	}

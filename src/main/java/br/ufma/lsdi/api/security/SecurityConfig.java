@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		AuthenticationManager authenticationManager = authenticationManager();
 		httpSecurity.authorizeRequests()
 					.antMatchers(HttpMethod.GET, "/api/v1/login").permitAll()
+					.antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
 					.anyRequest().authenticated()
 					.and().csrf().disable()
 					.addFilter(new JwtAuthenticationFilter(authenticationManager))

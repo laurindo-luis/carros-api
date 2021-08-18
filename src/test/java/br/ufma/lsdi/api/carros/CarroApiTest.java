@@ -5,6 +5,11 @@ import org.modelmapper.ModelMapper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -25,7 +30,6 @@ public class CarroApiTest extends BaseApiTest {
 				"", "", "", "");
 		ResponseEntity<Void> responseEntity = post("/api/v1/carros", carro, null);
 		assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-		
 	}
 	
 	@Test
@@ -52,5 +56,13 @@ public class CarroApiTest extends BaseApiTest {
 		Long id = carro.getId();
 		carroDTO = get("/api/v1/carros/"+id, CarroDTO.class).getBody();
 		assertEquals(carroDTO.getNome(), nomeAtualizado);
+	}
+	
+	@Test
+	public void getCarros() {
+		ResponseEntity<PageOutput> responseEntity = get("/api/v1/carros?page=1&size=30", PageOutput.class);
+		List<CarroDTO> carros = (List<CarroDTO>)responseEntity.getBody().getBody();
+		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+		assertEquals(30, carros.size());	
 	}
 }

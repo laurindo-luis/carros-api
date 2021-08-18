@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import br.ufma.lsdi.api.security.jwt.JwtUtil;
+
 @Service
 public class UserService {
 	
@@ -18,13 +20,16 @@ public class UserService {
 		return userRepository.findByLogin(login);
 	}
 	
-	public void salvar(User user) {
+	public UserDTO salvar(User user) {
 		Assert.isNull(user.getId(), "Não foi possível salvar o registro. Id não é null");
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setSenha(encoder.encode(user.getSenha()));
 		
 		userRepository.save(user);
+		
+		String token = JwtUtil.createToken(user);
+		return UserDTO.create(user, token);
 	}
 	
 	public List<UserDTO> getUsers() {

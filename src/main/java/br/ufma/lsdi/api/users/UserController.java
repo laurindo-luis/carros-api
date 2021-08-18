@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,8 +30,14 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public ResponseEntity getusers() {
+	public ResponseEntity<List<UserDTO>> getusers() {
 		List<UserDTO> users = userService.getUsers();
 		return ResponseEntity.ok(users);
+	}
+	
+	@PostMapping
+	public ResponseEntity<UserDTO> salvar(@RequestBody User user) {
+		UserDTO userDTO = userService.salvar(user);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userDTO);
 	}
 }

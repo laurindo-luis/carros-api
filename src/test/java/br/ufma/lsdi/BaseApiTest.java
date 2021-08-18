@@ -22,14 +22,14 @@ import br.ufma.lsdi.api.users.UserService;
 public abstract class BaseApiTest {
 	
 	@Autowired
-	private TestRestTemplate rest;
+	protected TestRestTemplate rest;
 	
 	@Autowired
 	private UserService userService;
 	
 	private String token = null;
 	
-	private HttpHeaders getHeaders() {
+	protected HttpHeaders getHeaders() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.AUTHORIZATION, "Bearer "+token);
 		return headers;
