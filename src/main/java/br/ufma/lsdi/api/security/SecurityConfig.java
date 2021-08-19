@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {	
 		AuthenticationManager authenticationManager = authenticationManager();
 		httpSecurity.authorizeRequests()
+					.antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
 					.antMatchers(HttpMethod.GET, "/api/v1/login").permitAll()
 					.antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
 					.anyRequest().authenticated()

@@ -2,6 +2,7 @@ package br.ufma.lsdi.api.users;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,10 +13,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.ufma.lsdi.api.roles.Role;
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Data
 @Entity
@@ -72,5 +80,16 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	public static User create(UserDTO userDTO) {
+		List<Role> roles = userDTO.getRoles()
+				.stream()
+				.map(Role::create)
+				.collect(Collectors.toList());
+		
+		User user = new ModelMapper().map(userDTO, User.class);
+		user.setRoles(roles);
+		return user;
 	}
 }
