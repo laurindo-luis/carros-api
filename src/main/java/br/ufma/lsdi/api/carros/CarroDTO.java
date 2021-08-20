@@ -1,6 +1,7 @@
 package br.ufma.lsdi.api.carros;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CarroDTO {
+public class CarroDTO extends RepresentationModel<CarroDTO> {
 	
 	private Long id;
 	private String nome;

@@ -57,7 +57,7 @@ public class CarroApiTest extends BaseApiTest {
 	
 	@Test
 	public void getCarros() {
-		ResponseEntity<PageOutput> responseEntity = get("/api/v1/carros?page=1&size=30", PageOutput.class);
+		ResponseEntity<PageOutput> responseEntity = get("/api/v1/carros?page=0&size=30", PageOutput.class);
 		List<CarroDTO> carros = (List<CarroDTO>)responseEntity.getBody().getBody();
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		assertEquals(30, carros.size());	

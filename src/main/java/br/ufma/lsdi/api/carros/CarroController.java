@@ -1,7 +1,6 @@
 package br.ufma.lsdi.api.carros;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
 @RestController
 @RequestMapping("/api/v1/carros")
 public class CarroController {
@@ -27,10 +25,9 @@ public class CarroController {
 	private CarroService carroService;
 	
 	@GetMapping
-	public ResponseEntity<PageOutput> getCarros(@RequestParam(value = "page", defaultValue="1") Integer page,
+	public ResponseEntity<PageOutput> getCarros(@RequestParam(value = "page", defaultValue="0") Integer page,
 			@RequestParam(value = "size", defaultValue="10") Integer size) {
-		
-		PageOutput pageOutput = carroService.getCarros(PageRequest.of(page - 1, size));
+		PageOutput pageOutput = carroService.getCarros(PageRequest.of(page, size));
 		return ResponseEntity.ok(pageOutput);
 	}
 	
