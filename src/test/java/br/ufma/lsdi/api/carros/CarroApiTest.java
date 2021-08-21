@@ -22,7 +22,6 @@ public class CarroApiTest extends BaseApiTest {
 	
 	@Test
 	public void salvar() {
-		
 		Carro carro = new Carro(null, "Gol G6", "Branco", "Carro novo", 
 				"", "", "", "");
 		ResponseEntity<Void> responseEntity = post("/api/v1/carros", carro, null);

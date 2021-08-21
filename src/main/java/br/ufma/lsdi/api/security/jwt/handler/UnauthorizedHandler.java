@@ -20,7 +20,8 @@ public class UnauthorizedHandler implements AuthenticationEntryPoint {
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
 		//Comando se token errado ou ausente
-		String json = ServletUtil.toJson("error", "Não autorizado");
+		String json = ServletUtil.toJson("error", "Não autorizado. Realize o login no endereço "
+				+ "por meio do endereço http://localhost:8080/login");
 		ServletUtil.write(response, HttpStatus.FORBIDDEN, json);
 	}
 }

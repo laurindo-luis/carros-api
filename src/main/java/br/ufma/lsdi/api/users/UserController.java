@@ -33,7 +33,6 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 	
-	
 	@PostMapping
 	public ResponseEntity<UserDTO> salvar(@RequestBody UserDTO user) {
 		UserDTO userDTO = userService.salvar(user);
