@@ -19,9 +19,15 @@ public class UnauthorizedHandler implements AuthenticationEntryPoint {
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
+		
+		String url = request.getRequestURL().toString();
+		String message = String.format("Não autorizado. Verifique o token de acesso ou "
+				+ "realize o login por meio do endereço %sapi/v1/login. Caso não possua "
+				+ "cadastro, realize o mesmo em %sapi/v1/users.", 
+				url, url);
+		
 		//Comando se token errado ou ausente
-		String json = ServletUtil.toJson("error", "Não autorizado. Realize o login no endereço "
-				+ "por meio do endereço http://localhost:8080/login");
+		String json = ServletUtil.toJson("error", message);
 		ServletUtil.write(response, HttpStatus.FORBIDDEN, json);
 	}
 }

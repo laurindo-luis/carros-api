@@ -16,11 +16,11 @@ public class RootEntryPointController {
 		RootEntryPoint rootEntryPoint = new RootEntryPoint();
 		rootEntryPoint.add(
 				linkTo(methodOn(UserController.class).salvar(null)
-			).withRel("cadastrar-usuario"));	
+			).withRel("cadastrar-usuario").withType("POST"));	
 		
 		rootEntryPoint.add(
 				linkTo(methodOn(CarroController.class).getCarros(0, 10)
-			).withRel("lista-carros"));
+			).withRel("lista-carros").withType("GET"));
 
 		return rootEntryPoint;
 	}
